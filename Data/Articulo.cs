@@ -6,7 +6,11 @@ namespace GestionPedidos.Data
     public class Articulo
     {
         [Required]
-        public int Id { get; set; }
+        public int ID { get; set; }
+
+        [Required]
+        [Column(TypeName = "nvarchar(25)")]
+        public string Codigo { get; set; }
 
         [Required]
         [Column(TypeName = "nvarchar(150)")]
@@ -14,17 +18,14 @@ namespace GestionPedidos.Data
 
         [Required]
         [Column(TypeName = "nvarchar(20)")]
-        public string Referencia { get; set; }
+        public string? Referencia { get; set; }
 
         [Required]
         [Column(TypeName = "nvarchar(50)")]
-        public string Color { get; set; }
+        public string? PrecioSinIva { get; set; }
 
         [Required]
-        public int Cantidad { get; set; }
+        public int? Stock { get; set; }
 
-        [Required]
-        [Column(TypeName = "nvarchar(200)")]
-        public string DondeEsta { get; set;}
     }
 }

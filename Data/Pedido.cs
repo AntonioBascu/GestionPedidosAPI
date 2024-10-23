@@ -6,27 +6,34 @@ namespace GestionPedidos.Data
     public class Pedido
     {
         [Required]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required]
-        public DateTime FCreado { get; set; }
+        public DateTime Creado { get; set; }
+        [Required]
+        public int CreadoPorID { get; set; }
+        [Required]
+        public Usuario CreadoPor { get; set; }
 
-        public DateTime FEntregaMax { get; set; }
+        public DateTime Modificado { get; set; }
+        public int ModificadoPorID { get; set; }
+        public Usuario ModificadoPor { get; set; }
 
-        public DateTime FPasadoTaller { get; set; }
+        public DateTime EntregaMax { get; set; }
 
         public double Precio { get; set; }
 
         [Required]
-        public int IdCliente { get; set; }
+        [Column(TypeName = "nvarchar(20)")]
+        public string Vendedor { get; set; }
 
+        [Required]
+        public int IdCliente { get; set; }
         [Required]
         public Cliente Cliente { get; set; }
 
         [Required]
         public Estado Estado { get; set; }
-        
-        public Usuario ModificadoPor {  get; set; }
 
         [Required]
         public ICollection<LineaPedido> LineasPedido { get; set; }

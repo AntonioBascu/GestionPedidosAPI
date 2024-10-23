@@ -6,18 +6,27 @@ namespace GestionPedidos.Data
     public class LineaPedido
     {
         [Required]
-        public int Id { get; set; }
+        public int ID { get; set; }
 
         [Required]
-        public int IdPedido { get; set; }
+        public int IDPedido { get; set; }
 
         [Required]
         public Pedido Pedido { get; set;}
+        
+        [Required]
+        public int IDArticulo { get; set; }
 
-        public int Precio { get; set; }
+        [Required]
+        public Articulo Articulo { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
-        public string AreaGrabado { get; set; }
+        [Required]
+        public TipoGrabado TipoGrabado { get; set;}
+
+        [Required]
+        public string Tinta { get; set; }
+
+        public bool DosCaras { get; set; }
 
         [Required]
         [Column(TypeName = "nvarchar(50)")]
@@ -25,6 +34,11 @@ namespace GestionPedidos.Data
 
         [Required]
         public int Cantidad { get; set; }
+
+        public DateTime Modificado { get; set; }
+
+        public int ModificadoPorID { get; set; }
+        public Usuario ModificadoPor { get; set; }
 
     }
 }
