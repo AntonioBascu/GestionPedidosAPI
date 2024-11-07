@@ -16,13 +16,13 @@ namespace GestionPedidos
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-            
+
             services.AddControllers();
-    
+
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Conference Planner API", Version = "v1" });
-            });   
+                options.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestion Pedidos API", Version = "v1" });
+            });
 
         }
 
@@ -30,7 +30,7 @@ namespace GestionPedidos
         {
             // Configure the HTTP request pipeline.
             if (!env.IsDevelopment())
-            { 
+            {
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -39,6 +39,11 @@ namespace GestionPedidos
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            app.UseCors(options => options
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
 
             app.UseHttpsRedirection();
 

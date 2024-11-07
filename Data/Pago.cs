@@ -17,7 +17,8 @@ namespace GestionPedidos.Data
         public string NumeroTarjeta { get; set; }
 
         [Required]
-        public DateTime FechaCaducidad { get; set; }
+        [Column(TypeName = "nvarchar(5)")]
+        public string FechaCaducidad { get; set; }
 
         [Required]
         [Column(TypeName = "nvarchar(3)")]
