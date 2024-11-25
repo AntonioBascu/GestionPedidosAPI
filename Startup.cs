@@ -1,4 +1,6 @@
 ﻿using GestionPedidos.Data;
+using GestionPedidosAPI.Utilities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -15,10 +17,22 @@ namespace GestionPedidos
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+            
+            //Identity Core
+            services
+                .AddIdentityApiEndpoints<Usuario>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<IdentityOptions>(options =>
+            { 
+                options.User.RequireUniqueEmail = true;
+            });
+
+            //DbContext
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
-
+            //Swagger
             services.AddSwaggerGen(options =>
             {
                 options.SwaggerDoc("v1", new OpenApiInfo { Title = "Gestion Pedidos API", Version = "v1" });
@@ -54,6 +68,22 @@ namespace GestionPedidos
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGroup("/api").MapIdentityApi<Usuario>();
+
+                endpoints.MapPost("/api/signup", async (UserManager<Usuario> userManager, RegistroUsuarioModel registroUsuarioModel) =>
+                {
+                    Usuario usuario = new Usuario()
+                    {
+                        UserName = registroUsuarioModel.userName,
+                        Email = registroUsuarioModel.email
+                    };
+
+                    var resultado = await userManager.CreateAsync(usuario, registroUsuarioModel.Password);
+
+                    if (resultado.Succeeded) return Results.Ok(resultado);
+                    else return Results.BadRequest(resultado);
+                });
+
                 endpoints.MapControllers();
             });
 

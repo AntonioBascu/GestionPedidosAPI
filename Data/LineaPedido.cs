@@ -12,13 +12,13 @@ namespace GestionPedidos.Data
         public int IDPedido { get; set; }
 
         [Required]
-        public Pedido Pedido { get; set;}
+        public virtual Pedido Pedido { get; set;}
         
         [Required]
         public int IDArticulo { get; set; }
 
         [Required]
-        public Articulo Articulo { get; set; }
+        public virtual Articulo Articulo { get; set; }
 
         [Required]
         public TipoGrabado TipoGrabado { get; set;}
@@ -37,8 +37,8 @@ namespace GestionPedidos.Data
 
         public DateTime Modificado { get; set; }
 
-        public int ModificadoPorID { get; set; }
-        public Usuario ModificadoPor { get; set; }
+        public string ModificadoPorID { get; set; }
+        public virtual Usuario ModificadoPor { get; set; }
 
     }
 }

@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace GestionPedidos.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -22,7 +23,6 @@ namespace GestionPedidos.Data
         }
 
         public DbSet<Articulo> Articulos { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<LineaPedido> LineasPedido { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }

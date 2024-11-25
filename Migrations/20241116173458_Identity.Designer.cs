@@ -4,6 +4,7 @@ using GestionPedidos.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionPedidos.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241116173458_Identity")]
+    partial class Identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,6 +58,55 @@ namespace GestionPedidos.Migrations
                     b.ToTable("Articulos");
                 });
 
+            modelBuilder.Entity("GestionPedidos.Data.Cliente", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Codigo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("CodigoPostal")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(6)");
+
+                    b.Property<string>("Domicilio")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<string>("NombreComercial")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Poblacion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Provincia")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("RazonSocial")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(12)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Clientes");
+                });
+
             modelBuilder.Entity("GestionPedidos.Data.LineaPedido", b =>
                 {
                     b.Property<int>("ID")
@@ -78,8 +130,8 @@ namespace GestionPedidos.Migrations
                     b.Property<DateTime>("Modificado")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ModificadoPorID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ModificadoPorID")
+                        .HasColumnType("int");
 
                     b.Property<string>("SituacionGrabacion")
                         .IsRequired()
@@ -143,9 +195,8 @@ namespace GestionPedidos.Migrations
                     b.Property<DateTime>("Creado")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CreadoPorID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("CreadoPorID")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("EntregaMax")
                         .HasColumnType("datetime2");
@@ -153,15 +204,14 @@ namespace GestionPedidos.Migrations
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
-                    b.Property<string>("IdCliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("IdCliente")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Modificado")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ModificadoPorID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("ModificadoPorID")
+                        .HasColumnType("int");
 
                     b.Property<double>("Precio")
                         .HasColumnType("float");
@@ -179,6 +229,26 @@ namespace GestionPedidos.Migrations
                     b.HasIndex("ModificadoPorID");
 
                     b.ToTable("Pedidos");
+                });
+
+            modelBuilder.Entity("GestionPedidos.Data.Usuario", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<bool>("Taller")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Usuarios");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -245,11 +315,6 @@ namespace GestionPedidos.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(13)
-                        .HasColumnType("nvarchar(13)");
-
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -301,10 +366,6 @@ namespace GestionPedidos.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasDiscriminator().HasValue("IdentityUser");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -388,45 +449,6 @@ namespace GestionPedidos.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("GestionPedidos.Data.Usuario", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<string>("AñoAntiguedad")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("CodigoCliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)");
-
-                    b.Property<string>("CodigoPostal")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(6)");
-
-                    b.Property<string>("Domicilio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("NombreComercial")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("Poblacion")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("Provincia")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("RazonSocial")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(150)");
-
-                    b.HasDiscriminator().HasValue("Usuario");
-                });
-
             modelBuilder.Entity("GestionPedidos.Data.LineaPedido", b =>
                 {
                     b.HasOne("GestionPedidos.Data.Articulo", "Articulo")
@@ -461,7 +483,7 @@ namespace GestionPedidos.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("GestionPedidos.Data.Usuario", "Cliente")
+                    b.HasOne("GestionPedidos.Data.Cliente", "Cliente")
                         .WithMany()
                         .HasForeignKey("IdCliente")
                         .OnDelete(DeleteBehavior.NoAction)

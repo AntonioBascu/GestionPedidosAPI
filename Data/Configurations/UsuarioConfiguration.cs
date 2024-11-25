@@ -7,7 +7,6 @@ namespace GestionPedidos.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            builder.HasKey(u => u.ID);
         }
     }
 }
