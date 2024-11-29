@@ -1,6 +1,7 @@
 ﻿using GestionPedidos.Data;
 using GestionPedidosAPI.Utilities;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -70,12 +71,12 @@ namespace GestionPedidos
             {
                 endpoints.MapGroup("/api").MapIdentityApi<Usuario>();
 
-                endpoints.MapPost("/api/signup", async (UserManager<Usuario> userManager, RegistroUsuarioModel registroUsuarioModel) =>
+                endpoints.MapPost("/api/signup", async (UserManager<Usuario> userManager, [FromBody]RegistroUsuarioModel registroUsuarioModel) =>
                 {
                     Usuario usuario = new Usuario()
                     {
-                        UserName = registroUsuarioModel.userName,
-                        Email = registroUsuarioModel.email
+                        UserName = registroUsuarioModel.UserName,
+                        Email = registroUsuarioModel.Email
                     };
 
                     var resultado = await userManager.CreateAsync(usuario, registroUsuarioModel.Password);
