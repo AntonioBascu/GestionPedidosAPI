@@ -1,4 +1,4 @@
-﻿namespace GestionPedidosAPI.Utilities
+﻿namespace GestionPedidosAPI.Utilities.Models
 {
     public class RegistroUsuarioModel
     {
