@@ -52,14 +52,16 @@ namespace GestionPedidos
             }
 
             app.ConfigureCORS()
-               .AddIdentityAuthMiddlewares()
                .UseHttpsRedirection()
                .UseRouting()
+               .AddIdentityAuthMiddlewares()
                .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();
 
-                    endpoints.MapGroup("/api").MapUsuarioIdentityEndpoints();
+                    endpoints.MapGroup("/api")
+                        .MapUsuarioIdentityEndpoints()
+                        .MapUsuarioEndPoints();
                 });
 
             app.Run(context =>

@@ -1,5 +1,6 @@
 ﻿using GestionPedidos.Data;
 using GestionPedidosAPI.Utilities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -25,6 +26,7 @@ namespace GestionPedidosAPI.Controllers
             return endpoints;
         }
 
+        [AllowAnonymous]
         private static async Task<IResult> CrearUsuario(
             UserManager<Usuario> userManager,
             [FromBody] RegistroUsuarioModel registroUsuarioModel)
@@ -41,6 +43,7 @@ namespace GestionPedidosAPI.Controllers
             else return Results.BadRequest(resultado);
         }
 
+        [AllowAnonymous]
         private static async Task<IResult> IniciarSesion(
             UserManager<Usuario> userManager,
             [FromBody] LoginModel loginModel,

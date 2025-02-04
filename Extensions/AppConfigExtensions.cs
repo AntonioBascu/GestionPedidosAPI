@@ -1,5 +1,4 @@
-﻿using GestionPedidos.Data;
-using GestionPedidosAPI.Utilities.Models;
+﻿using GestionPedidosAPI.Utilities.Models;
 
 namespace GestionPedidosAPI.Extensions
 {
