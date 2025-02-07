@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace GestionPedidos.Migrations
+namespace GestionPedidosAPI.Migrations
 {
     /// <inheritdoc />
     public partial class ClienteUsuario : Migration

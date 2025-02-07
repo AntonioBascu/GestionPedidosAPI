@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestionPedidos.Data.Configurations
+namespace GestionPedidosAPI.Data.Configurations
 {
     public class PedidoConfiguration : IEntityTypeConfiguration<Pedido>
     {
@@ -12,7 +12,7 @@ namespace GestionPedidos.Data.Configurations
             builder
                 .HasOne(p => p.Cliente)
                 .WithMany()
-                .HasForeignKey(p => p.IdCliente)
+                .HasForeignKey(p => p.IDCliente)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.NoAction);
 

@@ -1,8 +1,9 @@
-﻿using GestionPedidos.Data;
+﻿using GestionPedidosAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace GestionPedidosAPI.Extensions
@@ -13,6 +14,7 @@ namespace GestionPedidosAPI.Extensions
         {
             services
                 .AddIdentityApiEndpoints<Usuario>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             return services;
@@ -55,12 +57,17 @@ namespace GestionPedidosAPI.Extensions
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
                     .RequireAuthenticatedUser()
                     .Build();
+
+                options.AddPolicy("UsuarioTieneID", policy => policy.RequireClaim("UserID"));
+                options.AddPolicy("10Antiguedad", policy => policy.RequireAssertion(context =>
+                (DateTime.Now.Year - Int32.Parse(context.User.Claims.First(x => x.Type == "AnoAntiguedad").Value)) > 10
+                ));
             });
 
             return services;
         }
 
-        public static IApplicationBuilder AddIdentityAuthMiddlewares(this IApplicationBuilder app)
+        public static IApplicationBuilder UseIdentityAuthMiddlewares(this IApplicationBuilder app)
         {
             app.UseAuthentication();
 

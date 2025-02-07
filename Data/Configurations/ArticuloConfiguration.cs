@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace GestionPedidos.Data.Configurations
+namespace GestionPedidosAPI.Data.Configurations
 {
     public class ArticuloConfiguration : IEntityTypeConfiguration<Articulo>
     {

@@ -1,4 +1,4 @@
-﻿namespace GestionPedidos.Data
+﻿namespace GestionPedidosAPI.Data
 {
     public enum TipoGrabado
     {

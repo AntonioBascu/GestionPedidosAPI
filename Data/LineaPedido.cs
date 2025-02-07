@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace GestionPedidos.Data
+namespace GestionPedidosAPI.Data
 {
     public class LineaPedido
     {
@@ -13,7 +13,13 @@ namespace GestionPedidos.Data
 
         [Required]
         public virtual Pedido Pedido { get; set;}
-        
+
+        [Required]
+        public string IDEncargado { get; set; }
+
+        [Required]
+        public virtual Usuario Encargado { get; set; }
+
         [Required]
         public int IDArticulo { get; set; }
 
@@ -25,8 +31,6 @@ namespace GestionPedidos.Data
 
         [Required]
         public string Tinta { get; set; }
-
-        public bool DosCaras { get; set; }
 
         [Required]
         [Column(TypeName = "nvarchar(50)")]

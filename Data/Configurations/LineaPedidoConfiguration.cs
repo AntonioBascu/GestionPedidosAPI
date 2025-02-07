@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestionPedidos.Data.Configurations
+namespace GestionPedidosAPI.Data.Configurations
 {
     public class LineaPedidoConfiguration : IEntityTypeConfiguration<LineaPedido>
     {
@@ -14,6 +14,19 @@ namespace GestionPedidos.Data.Configurations
                 .WithMany(p => p.LineasPedido)
                 .HasForeignKey(lp => lp.IDPedido)
                 .IsRequired();
+            
+            builder
+                .HasOne(lp => lp.Encargado)
+                .WithMany(e => e.TrabajosAsignados)
+                .HasForeignKey(lp => lp.IDEncargado)
+                .IsRequired();
+
+            builder
+                .HasOne(p => p.Encargado)
+                .WithMany()
+                .HasForeignKey(p => p.IDEncargado)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.NoAction);
 
             builder
                 .HasOne(lp => lp.Articulo)

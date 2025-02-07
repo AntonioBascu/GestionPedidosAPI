@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace GestionPedidos.Migrations
+namespace GestionPedidosAPI.Migrations
 {
     /// <inheritdoc />
     public partial class PagoDbSet : Migration

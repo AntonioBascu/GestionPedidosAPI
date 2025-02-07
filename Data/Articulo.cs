@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace GestionPedidos.Data
+namespace GestionPedidosAPI.Data
 {
     public class Articulo
     {

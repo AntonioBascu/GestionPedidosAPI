@@ -1,0 +1,23 @@
+[
+  {
+    "email": "admin1_@gmail.com",
+    "password": "admin111",
+    "userName": "Admin1",
+    "rol": "Admin",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI0MmY1MTk5Mi02NjFkLTQ1ZmQtYmJjMS03YmZlMmYzMmMwNmMiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3Mzg5NDU1MDYsImV4cCI6MTczODk0OTEwNiwiaWF0IjoxNzM4OTQ1NTA2fQ.f4FO7I0ZlhLhpVjA3xTpG9C09hCMSKFjGqmGS48T9A8"
+  },
+  {
+    "email": "taller1_@gmail.com",
+    "password": "taller11",
+    "userName": "taller1",
+    "rol": "Taller",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxZjM0MDgxZS0yY2Y2LTRhMjItODAzZi00NDUzY2JhMmE0YWEiLCJyb2xlIjoiVGFsbGVyIiwibmJmIjoxNzM4OTQ1NTI5LCJleHAiOjE3Mzg5NDkxMjksImlhdCI6MTczODk0NTUyOX0.g_gcl5r5LhHTwfIZYWUVlPGuQMUPDocYN9ptBqjMmUc"
+  },
+  {
+    "email": "oficina1_@gmail.com",
+    "password": "oficina1",
+    "userName": "oficina1",
+    "rol": "Oficina",
+    "token": ""
+  }
+]

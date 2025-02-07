@@ -1,4 +1,4 @@
-﻿using GestionPedidos.Data;
+﻿using GestionPedidosAPI.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -19,7 +19,7 @@ namespace GestionPedidosAPI.Controllers
             UserManager<Usuario> userManager,
             ClaimsPrincipal user)
         {
-            string userId = user.Claims.First(x => x.Type == "UserId").Value;
+            string userId = user.Claims.First(x => x.Type == "UserID").Value;
 
             var userDetails = await userManager.FindByIdAsync(userId);
 

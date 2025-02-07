@@ -1,4 +1,4 @@
-﻿using GestionPedidos.Data;
+﻿using GestionPedidosAPI.Data;
 using GestionPedidosAPI.Controllers;
 using GestionPedidosAPI.Extensions;
 using GestionPedidosAPI.Utilities.Models;
@@ -54,7 +54,7 @@ namespace GestionPedidos
             app.ConfigureCORS()
                .UseHttpsRedirection()
                .UseRouting()
-               .AddIdentityAuthMiddlewares()
+               .UseIdentityAuthMiddlewares()
                .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();

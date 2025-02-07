@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using GestionPedidos.Data;
+using GestionPedidosAPI.Data;
 
 namespace GestionPedidosAPI.Controllers
 {

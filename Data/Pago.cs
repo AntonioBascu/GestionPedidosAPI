@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace GestionPedidos.Data
+namespace GestionPedidosAPI.Data
 {
     public class Pago
     {

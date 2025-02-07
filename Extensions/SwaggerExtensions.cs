@@ -1,4 +1,4 @@
-﻿using GestionPedidos.Data;
+﻿using GestionPedidosAPI.Data;
 using Humanizer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;

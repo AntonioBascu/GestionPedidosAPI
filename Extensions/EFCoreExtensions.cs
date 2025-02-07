@@ -1,4 +1,4 @@
-﻿using GestionPedidos.Data;
+﻿using GestionPedidosAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 

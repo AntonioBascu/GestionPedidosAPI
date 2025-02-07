@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestionPedidos.Data.Configurations
+namespace GestionPedidosAPI.Data.Configurations
 {
     public class PagoConfiguration : IEntityTypeConfiguration<Pago>
     {

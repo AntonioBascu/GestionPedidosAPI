@@ -1,4 +1,4 @@
-﻿using GestionPedidos.Data;
+﻿using GestionPedidosAPI.Data;
 using GestionPedidosAPI.Utilities.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -38,6 +38,7 @@ namespace GestionPedidosAPI.Controllers
             };
 
             var resultado = await userManager.CreateAsync(usuario, registroUsuarioModel.Password);
+            await userManager.AddToRoleAsync(usuario, registroUsuarioModel.Rol);
 
             if (resultado.Succeeded) return Results.Ok(resultado);
             else return Results.BadRequest(resultado);
@@ -55,15 +56,19 @@ namespace GestionPedidosAPI.Controllers
 
             if (user != null && await userManager.CheckPasswordAsync(user, loginModel.Password))
             {
+                var roles = await userManager.GetRolesAsync(user);
+
                 var signInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(appSettings.Value.JWTSecret));
 
+                ClaimsIdentity claims = new ClaimsIdentity(new Claim[]
+                {
+                    new Claim("UserID", user.Id.ToString()),
+                    new Claim(ClaimTypes.Role, roles.First())
+                });
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                        new Claim("UserId", user.Id.ToString())
-                    }),
-                    Expires = DateTime.UtcNow.AddMinutes(10),
+                    Subject = claims,
+                    //Expires = DateTime.UtcNow.AddMinutes(10),
                     SigningCredentials = new SigningCredentials(signInKey, SecurityAlgorithms.HmacSha256Signature)
                 };
 
