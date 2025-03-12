@@ -65,6 +65,7 @@ namespace GestionPedidosAPI.Controllers
                     new Claim("UserID", user.Id.ToString()),
                     new Claim(ClaimTypes.Role, roles.First())
                 });
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = claims,

@@ -10,11 +10,11 @@ namespace GestionPedidosAPI.Controllers
         public static IEndpointRouteBuilder MapUsuarioEndPoints(this IEndpointRouteBuilder app)
         {
             app.MapGet("/PerfilUsuario", GetPerfilUsuario);
-            
+
             return app;
         }
 
-        [Authorize]
+        [Authorize(Roles = "Taller")]
         private static async Task<IResult> GetPerfilUsuario(
             UserManager<Usuario> userManager,
             ClaimsPrincipal user)
@@ -28,7 +28,8 @@ namespace GestionPedidosAPI.Controllers
                 {
                     Email = userDetails?.Email,
                     Nombre = userDetails?.UserName
-                });
+                }
+            );
         }
     }
 }

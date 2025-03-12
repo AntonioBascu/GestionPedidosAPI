@@ -4,20 +4,20 @@
     "password": "admin111",
     "userName": "Admin1",
     "rol": "Admin",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiI0MmY1MTk5Mi02NjFkLTQ1ZmQtYmJjMS03YmZlMmYzMmMwNmMiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3Mzg5NDU1MDYsImV4cCI6MTczODk0OTEwNiwiaWF0IjoxNzM4OTQ1NTA2fQ.f4FO7I0ZlhLhpVjA3xTpG9C09hCMSKFjGqmGS48T9A8"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI0MmY1MTk5Mi02NjFkLTQ1ZmQtYmJjMS03YmZlMmYzMmMwNmMiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3Mzk4OTI4NDIsImV4cCI6MTczOTg5NjQ0MiwiaWF0IjoxNzM5ODkyODQyfQ.rGt0HwKDG-7EWVv56iSbJDa1QMCe4hRReuaWzx1IZvo"
   },
   {
     "email": "taller1_@gmail.com",
     "password": "taller11",
     "userName": "taller1",
     "rol": "Taller",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySWQiOiIxZjM0MDgxZS0yY2Y2LTRhMjItODAzZi00NDUzY2JhMmE0YWEiLCJyb2xlIjoiVGFsbGVyIiwibmJmIjoxNzM4OTQ1NTI5LCJleHAiOjE3Mzg5NDkxMjksImlhdCI6MTczODk0NTUyOX0.g_gcl5r5LhHTwfIZYWUVlPGuQMUPDocYN9ptBqjMmUc"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxZjM0MDgxZS0yY2Y2LTRhMjItODAzZi00NDUzY2JhMmE0YWEiLCJyb2xlIjoiVGFsbGVyIiwibmJmIjoxNzM5ODkyODk0LCJleHAiOjE3Mzk4OTY0OTQsImlhdCI6MTczOTg5Mjg5NH0.zjIQaex2RL7h1VAD7hSsGY9niZs0NBR806JKU_1pfT0"
   },
   {
     "email": "oficina1_@gmail.com",
     "password": "oficina1",
     "userName": "oficina1",
     "rol": "Oficina",
-    "token": ""
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiIxN2EzNGI2NC1hOTY1LTQ2OWEtYThkYy05MWRmYzZjNWQ5M2QiLCJyb2xlIjoiT2ZpY2luYSIsIm5iZiI6MTczOTkxNTMzOSwiZXhwIjoxNzM5OTE4OTM5LCJpYXQiOjE3Mzk5MTUzMzl9.E5g809hM5tv4T5eJIujhQ5V39jr0-yqWSDgu54og8xU"
   }
 ]

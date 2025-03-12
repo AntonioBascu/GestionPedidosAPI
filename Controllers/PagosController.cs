@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GestionPedidosAPI.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GestionPedidosAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Oficina")]
     public class PagosController : ControllerBase
     {
         private readonly ApplicationDbContext _context;

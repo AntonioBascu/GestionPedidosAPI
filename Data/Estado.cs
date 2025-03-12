@@ -4,7 +4,8 @@
     {
         Creado = 0,
         PasadoTaller = 1,
-        Grabando = 2,
-        Terminado = 3
+        Preparado = 2,
+        Grabando = 3,
+        Terminado = 4
     }
 }
