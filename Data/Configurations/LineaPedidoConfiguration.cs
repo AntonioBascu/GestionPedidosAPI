@@ -14,17 +14,11 @@ namespace GestionPedidosAPI.Data.Configurations
                 .WithMany(p => p.LineasPedido)
                 .HasForeignKey(lp => lp.IDPedido)
                 .IsRequired();
-            
+
             builder
                 .HasOne(lp => lp.Encargado)
                 .WithMany(e => e.TrabajosAsignados)
                 .HasForeignKey(lp => lp.IDEncargado)
-                .IsRequired();
-
-            builder
-                .HasOne(p => p.Encargado)
-                .WithMany()
-                .HasForeignKey(p => p.IDEncargado)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.NoAction);
 
@@ -34,6 +28,13 @@ namespace GestionPedidosAPI.Data.Configurations
                 .HasForeignKey(lp => lp.IDArticulo)
                 .OnDelete(DeleteBehavior.NoAction);
 
+            builder
+                .HasOne(lp => lp.CreadoPor)
+                .WithMany()
+                .HasForeignKey(lp => lp.CreadoPorID)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.NoAction);
+            
             builder
                 .HasOne(lp => lp.ModificadoPor)
                 .WithMany()

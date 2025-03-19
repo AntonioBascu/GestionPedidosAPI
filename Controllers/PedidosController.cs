@@ -1,4 +1,5 @@
 ﻿using GestionPedidosAPI.Data;
+using GestionPedidosAPI.Utilities.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -72,13 +73,19 @@ namespace GestionPedidosAPI.Controllers
         // POST: api/Pedidos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Pedido>> PostPedido(Pedido Pedido)
+        public async Task<ActionResult<Pedido>> PostPedido(PedidoModel Pedido)
         {
             if (_context.Pedidos == null)
             {
                 return Problem("La tabla Pedidos es null.");
             }
-            _context.Pedidos.Add(Pedido);
+
+            Pedido pedido = new Pedido
+            {
+                
+            };
+
+            //_context.Pedidos.Add(Pedido);
             await _context.SaveChangesAsync();
 
             return Ok(await _context.Pedidos.ToListAsync());

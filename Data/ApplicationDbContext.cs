@@ -27,6 +27,6 @@ namespace GestionPedidosAPI.Data
         public DbSet<LineaPedido> LineasPedido { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Pago> Pagos { get; set; }
-        public DbSet<Cliente> Clientes { get; set; }
+        //public DbSet<Cliente> Clientes { get; set; }
     }
 }

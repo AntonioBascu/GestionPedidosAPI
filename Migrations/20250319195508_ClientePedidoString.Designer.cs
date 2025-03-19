@@ -4,6 +4,7 @@ using GestionPedidosAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionPedidosAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250319195508_ClientePedidoString")]
+    partial class ClientePedidoString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -120,7 +123,7 @@ namespace GestionPedidosAPI.Migrations
                     b.Property<int>("IDPedido")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("Modificado")
+                    b.Property<DateTime>("Modificado")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModificadoPorID")
@@ -198,13 +201,13 @@ namespace GestionPedidosAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("EntregaMax")
+                    b.Property<DateTime>("EntregaMax")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Estado")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("Modificado")
+                    b.Property<DateTime>("Modificado")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModificadoPorID")

@@ -14,10 +14,8 @@ namespace GestionPedidosAPI.Data
         [Required]
         public virtual Pedido Pedido { get; set;}
 
-        [Required]
         public string IDEncargado { get; set; }
 
-        [Required]
         public virtual Usuario Encargado { get; set; }
 
         [Required]
@@ -26,22 +24,26 @@ namespace GestionPedidosAPI.Data
         [Required]
         public virtual Articulo Articulo { get; set; }
 
-        [Required]
         public TipoGrabado TipoGrabado { get; set;}
 
-        [Required]
-        public string Tinta { get; set; }
-
-        [Required]
         [Column(TypeName = "nvarchar(50)")]
-        public string SituacionGrabacion { get; set; }
+        public string? Tinta { get; set; }
+
+        [Column(TypeName = "nvarchar(50)")]
+        public string? SituacionGrabacion { get; set; }
 
         [Required]
         public int Cantidad { get; set; }
 
-        public DateTime Modificado { get; set; }
+        [Required]
+        public DateTime Creado { get; set; }
+        [Required]
+        public string CreadoPorID { get; set; }
+        [Required]
+        public virtual Usuario CreadoPor { get; set; }
 
-        public string ModificadoPorID { get; set; }
+        public DateTime? Modificado { get; set; }
+        public string? ModificadoPorID { get; set; }
         public virtual Usuario ModificadoPor { get; set; }
 
     }

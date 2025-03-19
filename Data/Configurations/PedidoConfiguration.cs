@@ -9,12 +9,12 @@ namespace GestionPedidosAPI.Data.Configurations
         {
             builder.HasKey(p => p.ID);
 
-            builder
-                .HasOne(p => p.Cliente)
-                .WithMany()
-                .HasForeignKey(p => p.IDCliente)
-                .IsRequired()
-                .OnDelete(DeleteBehavior.NoAction);
+            //builder
+            //    .HasOne(p => p.Cliente)
+            //    .WithMany()
+            //    .HasForeignKey(p => p.IDCliente)
+            //    .IsRequired()
+            //    .OnDelete(DeleteBehavior.NoAction);
 
             builder
                 .HasMany(p => p.LineasPedido)

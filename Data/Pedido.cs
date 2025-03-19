@@ -9,19 +9,16 @@ namespace GestionPedidosAPI.Data
         public int ID { get; set; }
 
         [Required]
-        public int IDCliente { get; set; }
-        [Required]
-        public virtual Cliente Cliente { get; set; }
-
+        [Column(TypeName = "nvarchar(50)")]
+        public string Cliente { get; set; }
+        
         [Required]
         public Estado Estado { get; set; }
 
-        public DateTime EntregaMax { get; set; }
-
-        public double Precio { get; set; }
+        public DateTime? EntregaMax { get; set; }
 
         [Required]
-        [Column(TypeName = "nvarchar(20)")]
+        [Column(TypeName = "nvarchar(30)")]
         public string Vendedor { get; set; }
 
         [Required]
@@ -31,8 +28,8 @@ namespace GestionPedidosAPI.Data
         [Required]
         public virtual Usuario CreadoPor { get; set; }
 
-        public DateTime Modificado { get; set; }
-        public string ModificadoPorID { get; set; }
+        public DateTime? Modificado { get; set; }
+        public string? ModificadoPorID { get; set; }
         public virtual Usuario ModificadoPor { get; set; }
         
         [Required]

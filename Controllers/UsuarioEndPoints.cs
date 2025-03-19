@@ -14,7 +14,7 @@ namespace GestionPedidosAPI.Controllers
             return app;
         }
 
-        [Authorize(Roles = "Taller")]
+        [Authorize(Roles = "Taller, Admin")]
         private static async Task<IResult> GetPerfilUsuario(
             UserManager<Usuario> userManager,
             ClaimsPrincipal user)
