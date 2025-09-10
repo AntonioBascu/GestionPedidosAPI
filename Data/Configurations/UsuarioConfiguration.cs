@@ -10,7 +10,7 @@ namespace GestionPedidosAPI.Data.Configurations
             builder
                 .HasMany(u => u.TrabajosAsignados)
                 .WithOne(ta => ta.Encargado)
-                .HasForeignKey(ta => ta.IDEncargado)
+                .HasForeignKey(ta => ta.EncargadoID)
                 .OnDelete(DeleteBehavior.NoAction);
         }
     }

@@ -4,7 +4,7 @@
     "password": "admin111",
     "userName": "Admin1",
     "rol": "Admin",
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI0MmY1MTk5Mi02NjFkLTQ1ZmQtYmJjMS03YmZlMmYzMmMwNmMiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3Mzk4OTI4NDIsImV4cCI6MTczOTg5NjQ0MiwiaWF0IjoxNzM5ODkyODQyfQ.rGt0HwKDG-7EWVv56iSbJDa1QMCe4hRReuaWzx1IZvo"
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VySUQiOiI0MmY1MTk5Mi02NjFkLTQ1ZmQtYmJjMS03YmZlMmYzMmMwNmMiLCJyb2xlIjoiQWRtaW4iLCJuYmYiOjE3NDMzNDMwMzIsImV4cCI6MTc0MzM0NjYzMiwiaWF0IjoxNzQzMzQzMDMyfQ.GMeIxXYGnEVC-xbkK_xq8YMdlrqbRsuM1sLG0k8T2Ww"
   },
   {
     "email": "taller1_@gmail.com",

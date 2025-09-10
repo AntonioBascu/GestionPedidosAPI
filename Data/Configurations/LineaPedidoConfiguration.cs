@@ -18,15 +18,15 @@ namespace GestionPedidosAPI.Data.Configurations
             builder
                 .HasOne(lp => lp.Encargado)
                 .WithMany(e => e.TrabajosAsignados)
-                .HasForeignKey(lp => lp.IDEncargado)
-                .IsRequired()
+                .HasForeignKey(lp => lp.EncargadoID)
+                .IsRequired(false)
                 .OnDelete(DeleteBehavior.NoAction);
 
-            builder
-                .HasOne(lp => lp.Articulo)
-                .WithMany()
-                .HasForeignKey(lp => lp.IDArticulo)
-                .OnDelete(DeleteBehavior.NoAction);
+            //builder
+            //    .HasOne(lp => lp.Articulo)
+            //    .WithMany()
+            //    .HasForeignKey(lp => lp.IDArticulo)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
             builder
                 .HasOne(lp => lp.CreadoPor)

@@ -4,6 +4,7 @@ using GestionPedidosAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestionPedidosAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250328104850_ArticuloLineaPedidoString")]
+    partial class ArticuloLineaPedidoString
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -114,7 +117,8 @@ namespace GestionPedidosAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("EncargadoID")
+                    b.Property<string>("IDEncargado")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("IDPedido")
@@ -132,14 +136,14 @@ namespace GestionPedidosAPI.Migrations
                     b.Property<string>("Tinta")
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int?>("TipoGrabado")
+                    b.Property<int>("TipoGrabado")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
                     b.HasIndex("CreadoPorID");
 
-                    b.HasIndex("EncargadoID");
+                    b.HasIndex("IDEncargado");
 
                     b.HasIndex("IDPedido");
 
@@ -209,6 +213,7 @@ namespace GestionPedidosAPI.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Vendedor")
+                        .IsRequired()
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("ID");
@@ -444,8 +449,9 @@ namespace GestionPedidosAPI.Migrations
 
                     b.HasOne("GestionPedidosAPI.Data.Usuario", "Encargado")
                         .WithMany("TrabajosAsignados")
-                        .HasForeignKey("EncargadoID")
-                        .OnDelete(DeleteBehavior.NoAction);
+                        .HasForeignKey("IDEncargado")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("GestionPedidosAPI.Data.Pedido", "Pedido")
                         .WithMany("LineasPedido")

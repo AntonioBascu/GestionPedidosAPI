@@ -22,7 +22,7 @@ namespace GestionPedidosAPI.Data
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Articulo> Articulos { get; set; }
+        //public DbSet<Articulo> Articulos { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
         public DbSet<LineaPedido> LineasPedido { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }

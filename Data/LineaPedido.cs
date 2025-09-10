@@ -10,21 +10,18 @@ namespace GestionPedidosAPI.Data
 
         [Required]
         public int IDPedido { get; set; }
-
-        [Required]
         public virtual Pedido Pedido { get; set;}
 
-        public string IDEncargado { get; set; }
-
+        public string? EncargadoID { get; set; }
         public virtual Usuario Encargado { get; set; }
 
-        [Required]
-        public int IDArticulo { get; set; }
+        //[Required]
+        //public int IDArticulo { get; set; }
 
         [Required]
-        public virtual Articulo Articulo { get; set; }
+        public string Articulo { get; set; }
 
-        public TipoGrabado TipoGrabado { get; set;}
+        public TipoGrabado? TipoGrabado { get; set;}
 
         [Column(TypeName = "nvarchar(50)")]
         public string? Tinta { get; set; }
@@ -39,12 +36,11 @@ namespace GestionPedidosAPI.Data
         public DateTime Creado { get; set; }
         [Required]
         public string CreadoPorID { get; set; }
-        [Required]
         public virtual Usuario CreadoPor { get; set; }
 
         public DateTime? Modificado { get; set; }
         public string? ModificadoPorID { get; set; }
-        public virtual Usuario ModificadoPor { get; set; }
+        public virtual Usuario? ModificadoPor { get; set; }
 
     }
 }

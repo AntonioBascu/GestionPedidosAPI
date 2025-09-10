@@ -30,6 +30,8 @@ namespace GestionPedidos
         {
             services.AddControllers();
 
+            services.AddAutoMapper(typeof(Startup));
+
             services
                 .AddSwaggerExplorer()
                 .InjectDbContext(Configuration)
@@ -57,11 +59,11 @@ namespace GestionPedidos
                .UseIdentityAuthMiddlewares()
                .UseEndpoints(endpoints =>
                 {
-                    endpoints.MapControllers();
 
                     endpoints.MapGroup("/api")
                         .MapUsuarioIdentityEndpoints()
                         .MapUsuarioEndPoints();
+                    endpoints.MapControllers();
                 });
 
             app.Run(context =>

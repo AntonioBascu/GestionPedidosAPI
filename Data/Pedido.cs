@@ -17,20 +17,18 @@ namespace GestionPedidosAPI.Data
 
         public DateTime? EntregaMax { get; set; }
 
-        [Required]
         [Column(TypeName = "nvarchar(30)")]
-        public string Vendedor { get; set; }
+        public string? Vendedor { get; set; }
 
         [Required]
         public DateTime Creado { get; set; }
         [Required]
         public string CreadoPorID { get; set; }
-        [Required]
         public virtual Usuario CreadoPor { get; set; }
 
         public DateTime? Modificado { get; set; }
         public string? ModificadoPorID { get; set; }
-        public virtual Usuario ModificadoPor { get; set; }
+        public virtual Usuario? ModificadoPor { get; set; }
         
         [Required]
         public virtual ICollection<LineaPedido> LineasPedido { get; set; }
