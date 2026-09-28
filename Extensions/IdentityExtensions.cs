@@ -55,10 +55,10 @@ namespace GestionPedidosAPI.Extensions
 
             services.AddAuthorization(options =>
             {
-                options.FallbackPolicy = new AuthorizationPolicyBuilder()
-                    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
-                    .RequireAuthenticatedUser()
-                    .Build();
+                //options.FallbackPolicy = new AuthorizationPolicyBuilder()
+                //    .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                //    .RequireAuthenticatedUser()
+                //    .Build();
 
                 options.AddPolicy("UsuarioTieneID", policy => policy.RequireClaim("UserID"));
                 options.AddPolicy("10Antiguedad", policy => policy.RequireAssertion(context =>

@@ -14,6 +14,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using GestionPedidosAPI.Utilities.Mappings;
 
 namespace GestionPedidos
 {
@@ -30,7 +31,9 @@ namespace GestionPedidos
         {
             services.AddControllers();
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddEndpointsApiExplorer();
+
+            services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 
             services
                 .AddSwaggerExplorer()
@@ -43,15 +46,22 @@ namespace GestionPedidos
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Configure the HTTP request pipeline.
-            if (env.IsDevelopment())
-            {
-                app.UseDevelopmentConfiguration();
-            }
-            else
-            {
-                app.UseProductionConfiguration();
-            }
+            ////Configure the HTTP request pipeline.
+            //if (env.IsDevelopment())
+            //{
+            app.UseDevelopmentConfiguration();
+            //}
+            //else
+            //{
+            //    app.UseProductionConfiguration();
+            //}
+
+
+            //using (var scope = app.ApplicationServices.CreateScope())
+            //{
+            //    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            //    dbContext.Database.Migrate();
+            //}
 
             app.ConfigureCORS()
                .UseHttpsRedirection()

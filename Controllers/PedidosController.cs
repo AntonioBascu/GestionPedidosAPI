@@ -31,7 +31,7 @@ namespace GestionPedidosAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<PedidoRequestResponse>>> GetPedidos()
         {
-            return await _context.Pedidos.Include(p => p.LineasPedido).Select(p => _mapper.Map<PedidoRequestResponse>(p)).ToListAsync();
+            return await _context.Pedidos.Include(p => p.LineasPedido).OrderDescending().Select(p => _mapper.Map<PedidoRequestResponse>(p)).ToListAsync();
         }
 
         // GET: api/Pedidos/5
@@ -92,11 +92,44 @@ namespace GestionPedidosAPI.Controllers
 
         }
 
+        [HttpPut("Estado/{id}")]
+        public async Task<ActionResult<Pedido>> PutEstadoPedido(int id, [FromBody] Estado estado,
+            UserManager<Usuario> userManager)
+        {
+            try
+            {
+                var pedido = _context.Pedidos.Include(p => p.LineasPedido).FirstOrDefault(p => p.ID == id);
+
+                if (pedido == null)
+                {
+                    return NotFound();
+                }
+
+                string idUsuario = User.Claims.First(x => x.Type == "UserID").Value;
+
+                //TODO : salir del método si el usuario no se encuentra
+                var usuario = await userManager.FindByIdAsync(idUsuario);
+
+                pedido.Estado = estado;
+                pedido.Modificado = DateTime.Now;
+                pedido.ModificadoPorID = idUsuario;
+
+                await _context.SaveChangesAsync();
+
+                return Ok(_mapper.Map<PedidoRequestResponse>(pedido));
+            }
+            catch
+            {
+                throw;
+            }
+
+        }
+
         // POST: api/Pedidos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize(Roles = "Taller, Admin")]
-        public async Task<ActionResult> PostPedido([FromBody] PedidoRequestResponse pedidoRequest,
+        //[Authorize(Roles = "Taller, Admin")]
+        public async Task<ActionResult> PostPedido(PedidoRequestResponse pedidoRequest,
             UserManager<Usuario> userManager)
         {
             using var transaction = await _context.Database.BeginTransactionAsync();
