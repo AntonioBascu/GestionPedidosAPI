@@ -77,5 +77,40 @@ namespace GestionPedidosAPI.Extensions
 
             return app;
         }
+
+        public static async Task<IServiceProvider> SeedRolesAsync(this IServiceProvider serviceProvider)
+        {
+            using var scope = serviceProvider.CreateScope();
+
+            var roleManager = scope.ServiceProvider
+                .GetRequiredService<RoleManager<IdentityRole>>();
+
+            string[] roles =
+            [
+                "Admin",
+                "Taller",
+                "Oficina"
+            ];
+
+            foreach (var role in roles)
+            {
+                if (!await roleManager.RoleExistsAsync(role))
+                {
+                    var result = await roleManager.CreateAsync(new IdentityRole(role));
+
+                    if (!result.Succeeded)
+                    {
+                        var errors = string.Join(
+                            ", ",
+                            result.Errors.Select(e => e.Description));
+
+                        throw new InvalidOperationException(
+                            $"Error creando el rol '{role}': {errors}");
+                    }
+                }
+            }
+
+            return serviceProvider;
+        }
     }
 }

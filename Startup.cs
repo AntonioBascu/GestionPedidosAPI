@@ -15,6 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using GestionPedidosAPI.Utilities.Mappings;
+using System.Threading.Tasks;
 
 namespace GestionPedidos
 {
@@ -44,7 +45,7 @@ namespace GestionPedidos
                 .AddAppConfig(Configuration);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public async Task Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             ////Configure the HTTP request pipeline.
             //if (env.IsDevelopment())
@@ -75,6 +76,8 @@ namespace GestionPedidos
                         .MapUsuarioEndPoints();
                     endpoints.MapControllers();
                 });
+
+            await app.ApplicationServices.SeedRolesAsync();
 
             app.Run(context =>
             {
